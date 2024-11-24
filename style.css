@@ -1,0 +1,237 @@
+/* Reset */
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: radial-gradient(circle, #001f3f, #000000); /* Blue effect */
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+}
+
+.scene {
+    position: relative;
+    width: 400px;
+    height: 500px;
+}
+
+/* Main Stem */
+.stem.main-stem {
+    position: absolute;
+    bottom: 0;
+    left: 48.5%;
+    width: 23px;
+    height: 0;
+    background: linear-gradient(to top, #006400, #32cd32);
+    border-radius: 5px;
+    animation: growMainStem 3s ease forwards;
+    transform: translateX(100%);
+    box-shadow: 0 0 10px #32cd32;
+    z-index: 3;
+}
+
+/* Branch Stems */
+.stem.branch {
+    position: absolute;
+    bottom: 200px;
+    width: 15px;
+    height: 100px;
+    background-color:#32cd32;
+    /* background: linear-gradient(to top, #006400, #32cd32); */
+    box-shadow: 0 0 10px #32cd32;
+    border-radius: 5px;
+    opacity: 0;
+    animation: growBranchStem 2s ease forwards;
+    animation-delay: 3s;
+}
+
+.branch1 {
+    left: 35%; /* Adjusted for 30px separation */
+    transform: rotate(-60deg);
+    animation-delay: 3.5s;
+}
+
+.branch2 {
+    left: 45%; /* Adjusted for 30px separation */
+    transform: rotate(-30deg);
+    animation-delay: 4s;
+}
+
+.branch3 {
+    left: 55%; /* Center branch */
+    transform: rotate(0deg);
+    animation-delay: 4.5s;
+}
+
+.branch4 {
+    left: 65%; /* Adjusted for 30px separation */
+    transform: rotate(30deg);
+    animation-delay: 5s;
+}
+
+.branch5 {
+    top:190px;
+    left: 75%; /* Adjusted for 30px separation */
+    transform: rotate(60deg);
+    animation-delay: 5.5s;
+}
+
+/* Flowers */
+.flower {
+    position: absolute;
+    bottom: 500px; /* Positioned above the branches */
+    opacity: 0;
+    transform: scale(0);
+    animation: bloomFlower 2s ease forwards;
+    z-index:4;
+}
+
+.flower1 { left: 10%; top:160px; animation-delay: 5.5s; }
+.flower2 { left: 43%; animation-delay: 6s; }
+.flower3 { left: 50%;top:80px; animation-delay: 6.5s; }
+.flower4 { left: 57%; animation-delay: 7s; }
+.flower5 { left: 90%; top:240px; animation-delay: 7.5s; }
+
+/* Petals */
+.petal {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    background: radial-gradient(circle, #ff0000, #8b0000);
+    border-radius: 50%;
+    box-shadow: 0 0 15px #ff0000;
+}
+
+.petal1 {
+    top: -40px;
+    left: -30px;
+    transform: rotate(-45deg);
+}
+
+.petal2 {
+    top: -40px;
+    left: 30px;
+    transform: rotate(45deg);
+}
+
+.petal3 {
+    top: -70px;
+    left: 0;
+    transform: rotate(0deg);
+}
+
+.petal4 {
+    top: -10px;
+    left: 0;
+    transform: rotate(90deg);
+}
+
+/* Flower Center */
+.center {
+    position: absolute;
+    top: -20px;
+    left: 20px;
+    width: 20px;
+    height: 20px;
+    background: radial-gradient(circle, #ffeb3b, #ffca28);
+    border-radius: 50%;
+    box-shadow: 0 0 10px #ffeb3b;
+}
+
+/* Animations */
+@keyframes growMainStem {
+    0% {
+        height: 0;
+    }
+    100% {
+        height: 400px;
+    }
+}
+
+@keyframes growBranchStem {
+    0% {
+        height: 00px;
+        opacity: 0;
+    }
+    100% {
+        height: 200px;
+        opacity: 1;
+    }
+}
+
+@keyframes bloomFlower {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+.leaf {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(to right, #228B22, #32CD32);
+    border-radius: 100% 0;
+    opacity: 0;
+    transform-origin: 0 50%;
+    box-shadow: 0 0 8px #32CD32;
+    animation: growLeaf 1.5s ease forwards;
+    z-index:2;
+}
+
+/* Main stem leaves */
+.leaf-main1 { left: 40px; bottom: 80px; transform: rotate(30deg); animation-delay: 3.2s; }
+.leaf-main2 { left: -40px; bottom: 150px; transform: rotate(-150deg) scaleY(-1); animation-delay: 3.4s; }
+.leaf-main3 { left: 23px; bottom: 220px; transform: rotate(30deg); animation-delay: 3.6s; }
+.leaf-main4 { left: -40px; bottom: 290px; transform: rotate(-150deg) scaleY(-1); animation-delay: 3.8s; }
+
+/* Branch leaves */
+.leaf-branch1 { left: -90px; top: 20px; transform: rotate(-90deg); animation-delay: 4.2s; }
+.leaf-branch2 { left: 30px; top: 40px; transform: rotate(90deg) scaleX(-1); animation-delay: 4.4s; }
+.leaf-branch3 { left: -30px; top: 60px; transform: rotate(-90deg); animation-delay: 4.6s; }
+@keyframes growLeaf {
+    0% { 
+        transform-origin: 0 50%;
+        transform: scale(0) rotate(var(--rotation, 30deg));
+        opacity: 0;
+    }
+    100% { 
+        transform-origin: 0 50%;
+        transform: scale(1) rotate(var(--rotation, 30deg));
+        opacity: 1;
+    }
+}
+.message {
+    position: absolute;
+    top: 510px;
+    left: 55%;
+    transform: translateX(-50%);
+    font-size: 28px;
+    color: #fff;
+    text-shadow: 0 0 10px #ff69b4;
+    opacity: 0;
+    animation: fadeInMessage 2s ease forwards;
+    animation-delay: 8s; /* Appears after flowers bloom */
+    font-family: 'Arial', sans-serif;
+    text-align: center;
+    z-index: 10;
+    background: rgba(0, 0, 0, 0.3);
+    padding: 15px 30px;
+    border-radius: 20px;
+    white-space: nowrap;
+}
+
+@keyframes fadeInMessage {
+    0% {
+        opacity: 0;
+        transform: translateX(-50%) translateY(-20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+    }
+}
